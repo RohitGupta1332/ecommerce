@@ -5,7 +5,7 @@ import { generateToken } from "../utils/generateToken.js";
 
 export const registerUser = async (req, res) => {
     try {
-        const { name, contact, email, password } = req.body;
+        const { name, contact, email, password, isAdmin } = req.body;
         const user = await User.findOne({email: email});
 
         if (user) {
@@ -19,7 +19,8 @@ export const registerUser = async (req, res) => {
             name,
             contact,
             email,
-            password: hash
+            password: hash,
+            isAdmin
         });
 
         let token = generateToken(newUser);
@@ -29,7 +30,7 @@ export const registerUser = async (req, res) => {
 
     }
     catch(error){
-        res.status(500).json({message: "Internal server error"});
+        res.status(500).json({message: "Internal server error", error: error.message});
     }
 
 }
