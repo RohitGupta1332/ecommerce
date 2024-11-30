@@ -25,7 +25,6 @@ export const registerUser = async (req, res) => {
 
         let token = generateToken(newUser);
         res.cookie("token", token);
-
         res.status(201).json({message: "User registered"});
 
     }
