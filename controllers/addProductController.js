@@ -7,7 +7,6 @@ export const addProduct = async (req, res) => {
         const product = await Product.create({
             name, price, description, image, category, brand, stock, expiry
         });
-        console.log(product);
         if (product) {
             return res.status(201).json({ message: "Product added successfully" });
         }

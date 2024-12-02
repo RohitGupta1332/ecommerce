@@ -17,11 +17,11 @@ export const loginUser = async (req, res) => {
         
         const token = generateToken(user);
         res.cookie("token", token, {
-            httpOnly: true,  // Prevents JavaScript from accessing the cookie
-            secure: process.env.NODE_ENV === 'production', // Set to true if in production to use HTTPS
-            maxAge: 3600000,  // 1 hour expiry
-            sameSite: 'Strict', // CSRF protection
+            httpOnly: true, // Makes it inaccessible via JavaScript
+            sameSite: "Lax", // Ensure the cookie works in a cross-origin context
+            secure: false, // Disable secure if testing locally over HTTP
         });
+        
         res.status(200).json({message: "Log in successful"});
     }
     catch(error){

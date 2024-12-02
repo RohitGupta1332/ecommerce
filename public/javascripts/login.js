@@ -10,7 +10,7 @@ document.querySelector(".login-form").addEventListener("submit", (event) => {
 
 async function submitData(data){
     try{
-        const response = await fetch("http://localhost:3000/user/login", {
+        const response = await fetch("http://127.0.0.1:3000/user/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -25,7 +25,6 @@ async function submitData(data){
         }
 
         const result = await response.json();
-        console.log(result.token);
         window.location.href = "../html/home.html";
     }
     catch(error){

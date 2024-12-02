@@ -6,7 +6,6 @@ document.querySelector(".register-form").addEventListener('submit', (event) => {
         "email": document.querySelector("#email").value,
         "password": document.querySelector("#password").value
     };
-    console.log(formData);
     submitData(formData);
 
 })

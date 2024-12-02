@@ -2,26 +2,33 @@ import { Cart } from "../models/cart.model.js";
 
 export const addToCart = async (req, res) => {
     try {
-        const { products } = req.body;
+        const { productId, quantity } = req.body;
+
+        if (!productId || !quantity) {
+            return res.status(400).json({ message: "Product ID and quantity are required" });
+        }
+
+        const parsedQuantity = Number(quantity);
+        if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
+            return res.status(400).json({ message: "Invalid quantity" });
+        }
 
         let cart = await Cart.findOne({ userId: req.user.userId });
 
         if (cart) {
-            products.forEach((newProduct) => {
-                const existingProductIndex = cart.products.findIndex(p => p.productId.equals(newProduct.productId));
+            const existingProductIndex = cart.products.findIndex(p => p.productId.equals(productId));
 
-                if (existingProductIndex > -1) {
-                    cart.products[existingProductIndex].quantity += newProduct.quantity;
-                } else {
-                    cart.products.push(newProduct);
-                }
-            });
+            if (existingProductIndex > -1) {
+                cart.products[existingProductIndex].quantity += parsedQuantity;
+            } else {
+                cart.products.push({ productId, quantity: parsedQuantity });
+            }
 
             await cart.save();
         } else {
             cart = await Cart.create({
                 userId: req.user.userId,
-                products
+                products: [{ productId, quantity: parsedQuantity }]
             });
         }
 
