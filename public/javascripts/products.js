@@ -43,8 +43,8 @@ async function getProductsByCategory(category) {
 }
 
 function createProductCards(data) {
-    const categoriesSection = document.querySelector(".categories-section");
-
+    const categoriesSection = document.querySelector(".top-product-section");
+console.log(data)
     categoriesSection.innerHTML = '';
     data.products.forEach(product => {
         // Create the product card container

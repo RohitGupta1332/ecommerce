@@ -31,8 +31,8 @@
     transition: color 0.3s ease-in-out;
 }
 
-.page-links a:hover, .buttons button:hover {
-    color: #83DD3F;
+.page-links a:hover {
+    color: #3498db;
 }
 
 .page-links select {
@@ -56,7 +56,7 @@
 
 .page-links input[type="search"]:focus {
     width: 250px;
-    outline: 2px solid #83DD3F;
+    outline: 2px solid #3498db;
 }
 
 #cart-icon {
@@ -64,7 +64,7 @@
 }
 
 .buttons button {
-    background-color: #83DD3F;
+    background-color: #3498db;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -75,7 +75,7 @@
 }
 
 .buttons button:hover {
-    background-color: #6ab12e;
+    background-color: #2980b9;
 }
 
 /* Hide the hamburger menu by default */
@@ -220,95 +220,100 @@
     letter-spacing: 2px;
 }
 
-/* Product Card Styles */
+.top-product-section{
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    align-content: flex-start;  
+    padding: 5px 25px;
+    gap: 20px; 
+}
 /* Product Card Styles */
 .product-card {
+    flex: 1 1 250px; 
+    max-width: 278px;
+    box-sizing: border-box; 
     border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    max-width: 300px;
+    border-radius: 5px;
+    padding: 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #fff;
-    margin: 10px;
 }
 
-.product-image {
+.product-card img.product-image {
     width: 100%;
-    max-width: 90px;
-    height: auto;
-    margin-top: 5px;
+    height: 12rem; 
+    object-fit: contain;
+    background-color: #f9f9f9;
+    display: block;
 }
 
 .product-details {
-    padding: 15px;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.product-details .product-name {
-    font-size: 1.2rem;
+.product-name {
+    font-size: 1rem;
+    font-weight: 600;
     color: #333;
-    margin: 5px 0 5px;
+    line-height: 1.4;
 }
 
 .product-price {
-    font-size: 1.1rem;
-    color: #83DD3F;
-    margin: 5px 0 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #27ae60;
 }
 
-/* Flexbox container for quantity and button */
 .action-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    margin-top: 10px;
+    margin-top: 0.5rem;
+    flex-wrap: wrap; /* Ensures wrapping on smaller screens */
+    gap: 0.5rem;
 }
 
 .quantity-container {
     display: flex;
     align-items: center;
-}
-
-.quantity-container label {
-    font-size: 1rem;
-    margin-right: 5px;
-    color: #555;
+    gap: 0.4rem;
 }
 
 .product-quantity {
-    padding: 5px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 0.3rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    max-width: 3rem; /* Restricts size for better alignment */
+    text-align: center;
 }
 
-/* Add to Cart Button */
 .add-to-cart-btn {
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #83DD3F;
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    flex-shrink: 0; /* Prevents button from shrinking */
 }
 
 .add-to-cart-btn:hover {
-    background-color: #6ab12e;
+    background-color: #2980b9;
 }
-@media (max-width: 768px) {
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
     .product-card {
-        max-width: 100%;
+        max-width: 90%;
     }
 
-    .product-image{
-        max-width: 70px;
-    }
-    .product-details .product-name {
+    .product-name {
         font-size: 0.9rem;
     }
 
@@ -318,6 +323,15 @@
 
     .add-to-cart-btn {
         font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .quantity-container {
+        gap: 0.3rem;
+    }
+
+    .product-quantity {
+        padding: 0.2rem;
     }
 }
 
@@ -358,7 +372,7 @@ select.product-categories{
 .footer h4 {
     font-size: 1.2rem;
     margin-bottom: 15px;
-    border-bottom: 2px solid #83DD3F;
+    border-bottom: 2px solid #3498db;
     display: inline-block;
     padding-bottom: 5px;
 }
@@ -373,12 +387,12 @@ select.product-categories{
 
 .footer a {
     text-decoration: none;
-    color: #83DD3F;
+    color: #3498db;
     transition: color 0.3s ease;
 }
 
 .footer a:hover {
-    color: #6ab12e;
+    color: #2980b9;
 }
 
 /* Quick Links */
@@ -404,7 +418,7 @@ select.product-categories{
 }
 
 .footer-social .social-icons a:hover {
-    color: #83DD3F;
+    color: #3498db;
 }
 
 /* Footer Bottom */
